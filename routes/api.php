@@ -22,7 +22,7 @@ use App\Http\Controllers\CompraController;
 //     return $request->user();
 // });
 
-Route::resource('marcas', MarcaController::class);
-Route::resource('categorias', CategoriaController::class);
-Route::resource('productos', ProductoController::class);
-Route::resource('compras', CompraController::class);
+Route::apiResource('marcas', MarcaController::class);
+Route::apiResource('categorias', CategoriaController::class);
+Route::apiResource('productos', ProductoController::class);
+Route::apiResource('compras', CompraController::class);
