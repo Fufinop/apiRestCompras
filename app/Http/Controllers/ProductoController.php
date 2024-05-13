@@ -14,7 +14,7 @@ class ProductoController extends Controller
     public function index()
     {
         try {
-            $productos = Producto::all();
+            $productos = Producto::with('marca','categoria')->get();
             return ApiResponse::success('Lista de Productos', 200, $productos);
 
         } catch (Exception $e) {
@@ -56,7 +56,7 @@ class ProductoController extends Controller
     public function show($id)
     {
         try {
-            $producto = Producto::findOrFail($id);
+            $producto = Producto::with('marca','categoria')->findOrFail($id);
             return ApiResponse::success('Producto Obtenido Exitosamente', 200, $producto);
 
         } catch (ModelNotFoundException $e) {

@@ -82,6 +82,12 @@ class CategoriaController extends Controller
 
     public function productosPorCategoria($id)
     {
-        # code
+        try {
+            $categoria = Categoria::with('productos')->findOrFail($id);
+            return ApiResponse::success('Categoria y Lista de Productos', 200, $categoria);
+
+        } catch (ModelNotFoundException $e) {
+            return ApiResponse::error('Categoria no Encontrada',404);
+        }
     }
 }
